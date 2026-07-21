@@ -34,6 +34,7 @@ import android.os.Handler;
 import android.provider.Settings;
 import androidx.annotation.NonNull;
 import androidx.core.content.FileProvider;
+import androidx.core.view.WindowCompat;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.util.Log;
@@ -94,6 +95,7 @@ public class DiskUsage extends LoadableActivity {
   @Override
   protected void onCreate(Bundle icicle) {
     super.onCreate(icicle);
+    WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
     final DiskUsageViewModel viewModel = new ViewModelProvider(this).get(DiskUsageViewModel.class);
     Timber.d("DiskUsage.onCreate()");
     ActivityCommonBinding binding = ActivityCommonBinding.inflate(getLayoutInflater());

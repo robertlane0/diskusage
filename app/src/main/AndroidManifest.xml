@@ -27,8 +27,9 @@
                  android:launchMode="singleTop"
                  android:theme="@style/Theme"
                  android:hardwareAccelerated="true"
-                 android:requestLegacyExternalStorage="true">
-        <activity android:name=".ui.SelectActivity">
+                 android:requestLegacyExternalStorage="true"
+                 android:enableOnBackInvokedCallback="true">
+        <activity android:name=".ui.SelectActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

@@ -6,6 +6,10 @@ import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
+import android.view.View;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import com.google.android.diskusage.R;
 import com.google.android.diskusage.filesystem.entity.FileSystemEntry;
 import com.google.android.diskusage.filesystem.mnt.MountPoint;
@@ -21,6 +25,14 @@ public class ShowHideMountPointsActivity extends PreferenceActivity {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.mount_points_ignore_list);
         getPreferenceScreen().setOrderingAsAdded(true);
+        View rootView = findViewById(android.R.id.content);
+        if (rootView != null) {
+            ViewCompat.setOnApplyWindowInsetsListener(rootView, (v, windowInsets) -> {
+                Insets insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars());
+                v.setPadding(insets.left, insets.top, insets.right, insets.bottom);
+                return WindowInsetsCompat.CONSUMED;
+            });
+        }
     }
 
     @Override

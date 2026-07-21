@@ -13,6 +13,8 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.SearchView
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.forEach
 import com.google.android.diskusage.R
 import com.google.android.diskusage.databinding.AboutDialogBinding
@@ -98,6 +100,13 @@ class DiskUsageMenu(val diskusage: DiskUsage) {
         masterRoot = newRoot
         updateMenu()
         diskusage.setContentView(view)
+        if (view != null) {
+            ViewCompat.setOnApplyWindowInsetsListener(view) { _, windowInsets ->
+                val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+                diskusage.fileSystemState?.setWindowInsets(insets.left, insets.top, insets.right, insets.bottom)
+                WindowInsetsCompat.CONSUMED
+            }
+        }
         diskusage.invalidateOptionsMenu()
     }
 

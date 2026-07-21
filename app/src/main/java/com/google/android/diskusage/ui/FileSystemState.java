@@ -149,6 +149,33 @@ public class FileSystemState {
   private int screenWidth = 400;   // Safe values to not crash when touch events
   private int screenHeight = 400;  // come before screen initialized.
 
+  private int insetLeft = 0;
+  private int insetTop = 0;
+  private int insetRight = 0;
+  private int insetBottom = 0;
+
+  public void setWindowInsets(int left, int top, int right, int bottom) {
+    this.insetLeft = left;
+    this.insetTop = top;
+    this.insetRight = right;
+    this.insetBottom = bottom;
+    requestRepaint();
+    requestRepaintGPU();
+  }
+
+  public int getEffectiveHeight() {
+    int h = screenHeight - insetTop - insetBottom;
+    return h > 0 ? h : screenHeight;
+  }
+
+  public int getEffectiveWidth() {
+    int w = screenWidth - insetLeft - insetRight;
+    return w > 0 ? w : screenWidth;
+  }
+
+  public int getInsetLeft() { return insetLeft; }
+  public int getInsetTop() { return insetTop; }
+
   private float yscale;
 
   private long animationStartTime;
@@ -268,11 +295,12 @@ public class FileSystemState {
           touchMovement = true;
           float dy = ymax - ymin;
           if (dy < minDistance) dy = minDistance;
-          float avg_y = 0.5f * (ymax + ymin);
-          touchZoom = (displayBottom - displayTop) * (long)dy / screenHeight;
-          touchPoint = displayTop + (displayBottom - displayTop) * (long)avg_y / screenHeight;
+          float avg_y = 0.5f * (ymax + ymin) - insetTop;
+          int effectiveHeight = getEffectiveHeight();
+          touchZoom = (displayBottom - displayTop) * (long)dy / effectiveHeight;
+          touchPoint = displayTop + (displayBottom - displayTop) * (long)avg_y / effectiveHeight;
 
-          float avg_x = 0.5f * (xmax + xmin);
+          float avg_x = 0.5f * (xmax + xmin) - insetLeft;
           float dx = xmax - xmin;
           minDistanceX = FileSystemEntry.elementWidth / 2f;
           if (dx < minDistanceX) dx = minDistanceX;
@@ -283,12 +311,13 @@ public class FileSystemState {
         }
         float dy = ymax - ymin;
         if (dy < minDistance) dy = minDistance;
-        long displayBottom_Top = touchZoom * screenHeight / (long) dy;
-        float avg_y = 0.5f * (ymax + ymin);
-        displayTop = touchPoint - displayBottom_Top * (long) avg_y / screenHeight;
+        int effectiveHeight = getEffectiveHeight();
+        long displayBottom_Top = touchZoom * effectiveHeight / (long) dy;
+        float avg_y = 0.5f * (ymax + ymin) - insetTop;
+        displayTop = touchPoint - displayBottom_Top * (long) avg_y / effectiveHeight;
         displayBottom = displayTop + displayBottom_Top;
 
-        float avg_x = 0.5f * (xmax + xmin);
+        float avg_x = 0.5f * (xmax + xmin) - insetLeft;
         float dx = xmax - xmin;
         if (dx < minDistanceX) dx = minDistanceX;
         FileSystemEntry.elementWidth = (int) (dx / touchWidth);
@@ -472,9 +501,9 @@ public class FileSystemState {
       newTouchY = filterY.noFilter(newTouchY);
       touchX = newTouchX;
       touchY = newTouchY;
-      touchDepth = (FileSystemEntry.elementWidth * viewDepth + touchX) /
+      touchDepth = (FileSystemEntry.elementWidth * viewDepth + (touchX - insetLeft)) /
       FileSystemEntry.elementWidth;
-      touchPoint = displayTop + (displayBottom - displayTop) * (long)touchY / screenHeight;
+      touchPoint = displayTop + (displayBottom - displayTop) * (long)(touchY - insetTop) / getEffectiveHeight();
       touchEntry = masterRoot.findEntry((int)touchDepth + 1, touchPoint);
       if (touchEntry == masterRoot) {
         touchEntry = null;
@@ -690,7 +719,7 @@ public class FileSystemState {
     displayTop = viewTop - dt;
     displayBottom = viewBottom + dt;
 
-    yscale = screenHeight / (float)(displayBottom - displayTop);
+    yscale = getEffectiveHeight() / (float)(displayBottom - displayTop);
     return animation;
   }
 

@@ -2,5 +2,4 @@
 <lint>
     <issue id="MissingTranslation" severity="warning" />
     <issue id="NewApi" severity="warning" />
-    <issue id="ExpiredTargetSdkVersion" severity="ignore" />
 </lint>

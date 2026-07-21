@@ -27,6 +27,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import androidx.annotation.NonNull;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import com.google.android.diskusage.R;
 import com.google.android.diskusage.databinding.ActivityCommonBinding;
 import com.google.android.diskusage.filesystem.entity.FileSystemEntry;
@@ -181,6 +184,11 @@ public class SelectActivity extends Activity {
     FileSystemEntry.setupStrings(this);
     ActivityCommonBinding binding = ActivityCommonBinding.inflate(getLayoutInflater());
     setContentView(binding.getRoot());
+    ViewCompat.setOnApplyWindowInsetsListener(binding.getRoot(), (v, windowInsets) -> {
+      Insets insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars());
+      v.setPadding(insets.left, insets.top, insets.right, insets.bottom);
+      return WindowInsetsCompat.CONSUMED;
+    });
 //    ActionBar bar = getActionBar();
 //    bar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM | ActionBar.DISPLAY_USE_LOGO);
   }

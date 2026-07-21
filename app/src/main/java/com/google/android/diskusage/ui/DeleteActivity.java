@@ -24,6 +24,9 @@ import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
 import androidx.annotation.NonNull;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import com.google.android.diskusage.R;
 import com.google.android.diskusage.databinding.DeleteViewBinding;
@@ -56,6 +59,11 @@ public class DeleteActivity extends Activity {
 
     DeleteViewBinding binding = DeleteViewBinding.inflate(getLayoutInflater());
     setContentView(binding.getRoot());
+    ViewCompat.setOnApplyWindowInsetsListener(binding.getRoot(), (v, windowInsets) -> {
+      Insets insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars());
+      v.setPadding(insets.left, insets.top, insets.right, insets.bottom);
+      return WindowInsetsCompat.CONSUMED;
+    });
     String sizeString = getIntent().getStringExtra(SIZE_KEY);
     int count = getIntent().getIntExtra(NUM_FILES_KEY, 0);
     final File file = new File(absolutePath);
