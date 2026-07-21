@@ -1,9 +1,6 @@
 DiskUsage
 =========
 
-For a better maintained version of this project have a look at:
-https://github.com/WhiredPlanck/diskusage
-
 DiskUsage app for Android
 
 DiskUsage provides a way to find files and directories on storage card which consumes a lot of space.<br>
