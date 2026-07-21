@@ -109,7 +109,7 @@ public class Apps2SDLoader {
         entries.add(p);
         numLoadedPackages++;
       } catch (PackageManager.NameNotFoundException e) {
-        Timber.d("Failed to get package", e);
+        Timber.d(e, "Failed to get package");
       }
     }
 

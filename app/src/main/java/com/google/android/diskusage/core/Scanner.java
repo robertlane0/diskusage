@@ -154,7 +154,7 @@ public class Scanner implements DiskUsage.ProgressGenerator {
     try {
       listNames = file.list();
     } catch (SecurityException io) {
-      Timber.d("list files", io);
+      Timber.d(io, "list files");
     }
 
     if (listNames == null) return;

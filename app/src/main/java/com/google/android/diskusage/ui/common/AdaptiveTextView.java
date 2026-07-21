@@ -23,13 +23,14 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.widget.TextView;
+import androidx.appcompat.widget.AppCompatTextView;
 
 /**
  * TextView with message that fits the screen.
  * @author vol
  *
  */
-public class AdaptiveTextView extends TextView {
+public class AdaptiveTextView extends AppCompatTextView {
   public AdaptiveTextView(Context context, AttributeSet attrs) {
     super(context, attrs);
   }
