@@ -26,6 +26,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -34,13 +35,20 @@ import android.os.Handler;
 import android.provider.Settings;
 import androidx.annotation.NonNull;
 import androidx.core.content.FileProvider;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
+import android.widget.FrameLayout;
 
 import com.google.android.diskusage.BuildConfig;
 import com.google.android.diskusage.datasource.fast.LegacyFileImpl;
@@ -100,6 +108,27 @@ public class DiskUsage extends LoadableActivity {
     Timber.d("DiskUsage.onCreate()");
     ActivityCommonBinding binding = ActivityCommonBinding.inflate(getLayoutInflater());
     setContentView(binding.getRoot());
+    // Since this activity draws edge-to-edge (decorFitsSystemWindows == false), the system
+    // no longer paints an opaque scrim behind the status bar, leaving the status bar area
+    // (clock/battery/signal icons) transparent, showing through to whatever is behind the
+    // window. Add our own opaque view pinned to the top of the decor, sized to the status
+    // bar inset, so that region is always painted regardless of how the action bar's own
+    // internal views happen to be structured.
+    ViewGroup decorView = (ViewGroup) getWindow().getDecorView();
+    View statusBarScrim = new View(this);
+    statusBarScrim.setBackgroundColor(Color.BLACK);
+    FrameLayout.LayoutParams scrimParams =
+        new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0, Gravity.TOP);
+    decorView.addView(statusBarScrim, scrimParams);
+    ViewCompat.setOnApplyWindowInsetsListener(decorView, (v, windowInsets) -> {
+      Insets insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars());
+      ViewGroup.LayoutParams params = statusBarScrim.getLayoutParams();
+      if (params.height != insets.top) {
+        params.height = insets.top;
+        statusBarScrim.setLayoutParams(params);
+      }
+      return windowInsets;
+    });
     menu.onCreate(viewModel);
     Intent i = getIntent();
 
