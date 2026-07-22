@@ -11,13 +11,6 @@ abstract class DataSource {
     abstract fun getExternalFilesDir(context: Context): PortableFile?
     abstract val externalStorageDirectory: PortableFile?
     abstract fun createLegacyScanFile(root: String): LegacyFile?
-//    @Throws(Exception::class)
-//    abstract fun getPackageSizeInfo(
-//        pkgInfo: PkgInfo,
-//        getPackageSizeInfo: Method,
-//        pm: PackageManager?,
-//        callback: AppStatsCallback?
-//    )
 
     abstract fun getParentFile(file: PortableFile): PortableFile?
 

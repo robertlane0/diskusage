@@ -37,27 +37,6 @@ class DefaultDataSource : DataSource() {
         return LegacyFileImpl.createRoot(root)
     }
 
-//    @Throws(Exception::class)
-//    override fun getPackageSizeInfo(
-//        pkgInfo: PkgInfo,
-//        getPackageSizeInfo: Method,
-//        pm: PackageManager?,
-//        callback: AppStatsCallback?
-//    ) {
-//        getPackageSizeInfo.invoke(
-//            pm,
-//            pkgInfo.packageName,
-//            object : IPackageStatsObserver.Stub() {
-//                fun onGetStatsCompleted(
-//                    pStats: PackageStats?, succeeded: Boolean
-//                ) {
-//                    callback?.onGetStatsCompleted(
-//                        if (pStats != null) AppStatsImpl(pStats) else null, succeeded
-//                    )
-//                }
-//            })
-//    }
-
     override val externalStorageDirectory: PortableFile?
         get() = PortableFileImpl.make(Environment.getExternalStorageDirectory())
 
