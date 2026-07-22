@@ -9,5 +9,5 @@ You can zoom in to explore the contents of individual directories.
 
 The purpose of the app is to help you identify and clean up space-hogging files on your storage card. It is not intended to be a general-purpose file manager.  
 
-Screenshot for a recent version:
+Screenshot for a recent version:  
 ![Screenshot for a recent version](extra/screenshot.png)
