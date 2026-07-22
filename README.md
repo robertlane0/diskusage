@@ -1,14 +1,13 @@
-DiskUsage
-=========
+# DiskUsage
+---
 
-DiskUsage app for Android
+DiskUsage app for Android  
 
-DiskUsage provides a way to find files and directories on storage card which consumes a lot of space.<br>
-It displays diagram on which directories are displayed proportional to their size, also a few levels of subdirectories are displayed. Users are allowed to zoom in to look at specific directory content.<br>
-Purpose of the program is to provide a way to find and cleanup spacehogs on storage card. It is not general purpose file manager.<br>
+DiskUsage helps you find files and folders on your storage card that are using the most space.  
+It displays a visual map in which directories are shown in proportion to their size, along with several levels of subdirectories.  
+You can zoom in to explore the contents of individual directories.  
 
-Screenshot for an ancient version:<br>
-<img src="extra/screenshot.png">
+The purpose of the app is to help you identify and clean up space-hogging files on your storage card. It is not intended to be a general-purpose file manager.  
 
-YouTube video:
-https://www.youtube.com/watch?v=TIiCQfWdtVg
+Screenshot for a recent version:
+![Screenshot for a recent version](extra/screenshot.png")
