@@ -75,9 +75,13 @@
 <string name="graph_free_space">Wolne miejsce</string>
 <string name="graph_system_data">Dane systemowe</string>
 <string name="ask_view">Podgląd</string>
-<string name="dialog_usage_access_title">Wymagane uprawnienie dostępu do użytkowania</string>
-<string name="dialog_usage_access_desc">Zezwolić DiskUsage na uzyskanie listy zainstalowanych aplikacji?</string>
-<string name="dialog_external_storage_access_error">Odmówiono dostępu do pamięci zewnętrznej.</string>
+    <string name="dialog_usage_access_title">Wymagane uprawnienie dostępu do użytkowania</string>
+    <string name="dialog_usage_access_desc">Zezwolić DiskUsage na uzyskanie listy zainstalowanych aplikacji?</string>
+    <string name="dialog_storage_access_title">Wymagany dostęp do wszystkich plików</string>
+    <string name="dialog_storage_access_desc">DiskUsage potrzebuje dostępu do wszystkich plików, aby skanować i wyświetlać użycie pamięci.</string>
+    <string name="dialog_storage_access_grant">Udziel</string>
+    <string name="dialog_storage_access_skip">Pomiń</string>
+    <string name="dialog_external_storage_access_error">Bez pełnego dostępu do plików wyświetlone zostaną tylko informacje o aplikacjach.</string>
     <string name="dialog_ask_filemanager_title">Brak zgodnego menedżera plików</string>
     <string name="dialog_ask_filemanager_desc">Nie znaleziono zgodnego menedżera plików.\n\nPoproś swojego ulubionego dewelopera menedżerów plików o integrację z DiskUsage lub zainstaluj:\n * Solid Explorer\n * Menedżer plików OI</string>
     <string name="button_install_filemanager">Install Solid Explorer</string>

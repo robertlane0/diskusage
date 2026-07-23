@@ -79,7 +79,11 @@
     <string name="internal_only_desc">排除存储在 SD 卡上的数据</string>
     <string name="dialog_usage_access_title">需要使用情况访问权限</string>
     <string name="dialog_usage_access_desc">要允许磁盘详情获取已安装应用列表吗？</string>
-    <string name="dialog_external_storage_access_error">已拒绝访问外置存储。</string>
+    <string name="dialog_storage_access_title">需要所有文件访问权限</string>
+    <string name="dialog_storage_access_desc">磁盘详情需要访问所有文件以扫描和显示存储使用情况。</string>
+    <string name="dialog_storage_access_grant">允许</string>
+    <string name="dialog_storage_access_skip">跳过</string>
+    <string name="dialog_external_storage_access_error">如果没有完整的文件访问权限，将仅显示应用信息。</string>
     <string name="about_view_source_code"><![CDATA[在 %s 上查看源代码]]></string>
     <string name="action_about">关于</string>
 </resources>

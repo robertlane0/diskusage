@@ -79,6 +79,10 @@
     <string name="show_apk_desc">顯示程式文件。</string>
     <string name="dialog_usage_access_title">需要使用狀況存取權限</string>
     <string name="dialog_usage_access_desc">要允許磁碟詳情獲取已安裝程式清單嗎？</string>
-    <string name="dialog_external_storage_access_error">已拒絕存取外部儲存。</string>
+    <string name="dialog_storage_access_title">需要所有檔案存取權限</string>
+    <string name="dialog_storage_access_desc">磁碟詳情需要存取所有檔案以掃描和顯示儲存空間使用情況。</string>
+    <string name="dialog_storage_access_grant">允許</string>
+    <string name="dialog_storage_access_skip">跳過</string>
+    <string name="dialog_external_storage_access_error">若無完整的檔案存取權限，將僅顯示應用資訊。</string>
     <string name="about_view_source_code"><![CDATA[在 %s 上查看原始碼]]></string>
 </resources>

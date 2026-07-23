@@ -75,9 +75,13 @@
 <string name="graph_free_space">Free space</string>
 <string name="graph_system_data">System data</string>
 <string name="ask_view">View</string>
-<string name="dialog_usage_access_title">Usage Access Permission Needed</string>
-<string name="dialog_usage_access_desc">Allow DiskUsage to get list of installed apps?</string>
-<string name="dialog_external_storage_access_error">Access to external storage has been denied.</string>
+    <string name="dialog_usage_access_title">Usage Access Permission Needed</string>
+    <string name="dialog_usage_access_desc">Allow DiskUsage to get list of installed apps?</string>
+    <string name="dialog_storage_access_title">All Files Access Needed</string>
+    <string name="dialog_storage_access_desc">DiskUsage needs access to all files to scan and display storage usage.</string>
+    <string name="dialog_storage_access_grant">Grant</string>
+    <string name="dialog_storage_access_skip">Skip</string>
+    <string name="dialog_external_storage_access_error">Without full file access, only app information will be shown.</string>
     <string name="dialog_ask_filemanager_title">Missing compatible file manager</string>
     <string name="dialog_ask_filemanager_desc">No compatible filemanager found.\n\nAsk you favorite file manager developer for integration with DiskUsage or install:\n * Solid Explorer\n * OI File Manager</string>
     <string name="button_install_filemanager">Install Solid Explorer</string>
